@@ -132,431 +132,193 @@ const Urikai = () => {
   };
 
   return (
-    <div className="min-h-screen" style={{ 
-      fontFamily: 'Courier New, monospace',
-      backgroundColor: '#2D5A27',
-      backgroundImage: `
-        repeating-linear-gradient(0deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 8px),
-        repeating-linear-gradient(90deg, transparent, transparent 4px, rgba(0,0,0,0.1) 4px, rgba(0,0,0,0.1) 8px)
-      `,
-      imageRendering: 'pixelated'
-    }}>
+    <div className="min-h-screen bg-apple-gray-50 font-sf">
       {/* ヘッダー */}
-      <header style={{
-        backgroundColor: '#4A4A4A',
-        border: '4px solid #6A6A6A',
-        borderTop: '4px solid #8A8A8A',
-        borderLeft: '4px solid #8A8A8A',
-        borderRight: '4px solid #2A2A2A',
-        borderBottom: '4px solid #2A2A2A',
-        boxShadow: 'inset 2px 2px 0px #9A9A9A, inset -2px -2px 0px #1A1A1A'
-      }}>
-        <div className="max-w-6xl mx-auto px-4 py-4">
-          <div className="flex justify-between items-center">
-            <h1 style={{
-              fontSize: '24px',
-              fontWeight: 'bold',
-              color: '#FFFF00',
-              textShadow: '2px 2px 0px #000000',
-              letterSpacing: '2px'
-            }}>
-              ■ SHOP STREET TRADING ■
-            </h1>
-            <div className="flex items-center gap-4">
-              <div style={{
-                backgroundColor: '#FFD700',
-                border: '3px solid #FFFF80',
-                borderTop: '3px solid #FFFFFF',
-                borderLeft: '3px solid #FFFFFF',
-                borderRight: '3px solid #B8860B',
-                borderBottom: '3px solid #B8860B',
-                padding: '8px 12px'
-              }}>
-                <span style={{
-                  fontSize: '16px',
-                  fontWeight: 'bold',
-                  color: '#000000',
-                  textShadow: '1px 1px 0px #FFFFFF'
-                }}>
-                  MONEY: ¥{player.money.toLocaleString()}
-                </span>
+      <header className="backdrop-blur-apple bg-white/90 border-b border-apple-gray-200 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-20">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+                <span className="text-2xl">🏪</span>
+              </div>
+              <div>
+                <h1 className="text-2xl font-bold text-apple-gray-900 tracking-tight">
+                  売買ゲーム
+                </h1>
+                <p className="text-sm text-apple-gray-600 font-medium">Trading Game</p>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-4 py-2 rounded-apple shadow-apple">
+                <div className="flex items-center space-x-2">
+                  <span className="text-lg">💰</span>
+                  <span className="font-bold text-lg">
+                    ¥{player.money.toLocaleString()}
+                  </span>
+                </div>
               </div>
               <Link
                 to="/"
-                style={{
-                  backgroundColor: '#808080',
-                  border: '3px solid #A0A0A0',
-                  borderTop: '3px solid #C0C0C0',
-                  borderLeft: '3px solid #C0C0C0',
-                  borderRight: '3px solid #404040',
-                  borderBottom: '3px solid #404040',
-                  color: '#FFFFFF',
-                  fontWeight: 'bold',
-                  padding: '8px 16px',
-                  textDecoration: 'none',
-                  textShadow: '1px 1px 0px #000000',
-                  fontSize: '14px'
-                }}
+                className="bg-apple-gray-200 hover:bg-apple-gray-300 text-apple-gray-700 hover:text-apple-gray-900 font-medium py-2 px-4 rounded-apple transition-all duration-200 shadow-apple hover:shadow-apple-hover transform hover:scale-105"
               >
-                BACK
+                ← 戻る
               </Link>
             </div>
           </div>
         </div>
       </header>
 
-      <div className="max-w-6xl mx-auto p-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* ゲームメッセージ */}
-        <div style={{
-          backgroundColor: '#E0E0E0',
-          border: '4px solid #F0F0F0',
-          borderTop: '4px solid #FFFFFF',
-          borderLeft: '4px solid #FFFFFF',
-          borderRight: '4px solid #A0A0A0',
-          borderBottom: '4px solid #A0A0A0',
-          padding: '16px',
-          marginBottom: '24px',
-          textAlign: 'center',
-          boxShadow: 'inset 2px 2px 0px #F8F8F8, inset -2px -2px 0px #808080'
-        }}>
-          <p style={{
-            fontSize: '18px',
-            fontWeight: 'bold',
-            color: '#000080',
-            textShadow: '1px 1px 0px #FFFFFF',
-            margin: 0
-          }}>{gameMessage}</p>
+        <div className="bg-white/80 backdrop-blur-apple border border-apple-gray-200 rounded-apple-lg p-6 mb-8 shadow-apple">
+          <div className="flex items-center justify-center space-x-3">
+            <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center">
+              <span className="text-lg">💬</span>
+            </div>
+            <p className="text-lg font-medium text-apple-gray-800">
+              {gameMessage}
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-8">
           {/* 商店街エリア */}
-          <div className="lg:col-span-2">
-            <div style={{
-              backgroundColor: '#C0C0C0',
-              border: '4px solid #D0D0D0',
-              borderTop: '4px solid #FFFFFF',
-              borderLeft: '4px solid #FFFFFF',
-              borderRight: '4px solid #808080',
-              borderBottom: '4px solid #808080',
-              padding: '24px',
-              boxShadow: 'inset 2px 2px 0px #F0F0F0, inset -2px -2px 0px #606060'
-            }}>
-              <h2 style={{
-                fontSize: '20px',
-                fontWeight: 'bold',
-                marginBottom: '16px',
-                color: '#800080',
-                textShadow: '1px 1px 0px #FFFFFF',
-                letterSpacing: '2px'
-              }}>
-                ▲ SHOP STREET ▲
-              </h2>
-              
-              {/* 商店街の道路レイアウト */}
-              <div style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                gap: '16px',
-                position: 'relative'
-              }}>
-                {/* 上側の店舗 */}
-                <div style={{ display: 'flex', gap: '12px', justifyContent: 'space-around' }}>
-                  {shops.slice(0, 3).map(shop => (
-                    <div
-                      key={shop.id}
-                      className="cursor-pointer"
-                      onClick={() => handleShopClick(shop)}
-                      style={{
-                        transition: 'transform 0.1s',
-                        flex: '1',
-                        maxWidth: '120px'
-                      }}
-                    >
-                      <div
-                        style={{
-                          backgroundColor: shop.color,
-                          border: '4px solid',
-                          borderTopColor: '#FFFFFF',
-                          borderLeftColor: '#FFFFFF', 
-                          borderRightColor: '#000000',
-                          borderBottomColor: '#000000',
-                          padding: '12px',
-                          textAlign: 'center',
-                          boxShadow: 'inset 2px 2px 0px rgba(255,255,255,0.8), inset -2px -2px 0px rgba(0,0,0,0.8)',
-                          position: 'relative',
-                          minHeight: '100px'
-                        }}
-                      >
-                        <div style={{
-                          fontSize: '24px',
-                          marginBottom: '6px',
-                          filter: 'contrast(2) brightness(1.2)',
-                          textShadow: '2px 2px 0px #000000'
-                        }}>{shop.emoji}</div>
-                        <h3 style={{
-                          fontSize: '12px',
-                          fontWeight: 'bold',
-                          color: '#FFFFFF',
-                          textShadow: '2px 2px 0px #000000',
-                          marginBottom: '6px',
-                          letterSpacing: '1px'
-                        }}>
-                          {shop.name}
-                        </h3>
-                        <div style={{
-                          fontSize: '10px',
-                          color: '#FFFFFF',
-                          backgroundColor: 'rgba(0,0,0,0.5)',
-                          border: '2px solid #000000',
-                          padding: '2px 6px',
-                          textShadow: '1px 1px 0px #000000'
-                        }}>
-                          {shop.items.length} ITEMS
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+          <div className="xl:col-span-3">
+            <div className="bg-white/80 backdrop-blur-apple border border-apple-gray-200 rounded-apple-lg p-8 shadow-apple">
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center space-x-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                    <span className="text-2xl">🏬</span>
+                  </div>
+                  <h2 className="text-2xl font-bold text-apple-gray-900 tracking-tight">
+                    商店街
+                  </h2>
                 </div>
-
-                {/* 道路 */}
-                <div style={{
-                  height: '40px',
-                  backgroundColor: '#606060',
-                  border: '3px solid #404040',
-                  borderTop: '3px solid #808080',
-                  borderLeft: '3px solid #808080',
-                  borderRight: '3px solid #202020',
-                  borderBottom: '3px solid #202020',
-                  position: 'relative',
-                  backgroundImage: `
-                    repeating-linear-gradient(90deg, 
-                      transparent 0px, 
-                      transparent 10px, 
-                      rgba(255,255,255,0.2) 10px, 
-                      rgba(255,255,255,0.2) 12px,
-                      transparent 12px, 
-                      transparent 22px
-                    )
-                  `
-                }}>
-                  {/* 道路の中央線 */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '0',
-                    right: '0',
-                    height: '2px',
-                    backgroundColor: '#FFFF00',
-                    transform: 'translateY(-50%)',
-                    backgroundImage: `
-                      repeating-linear-gradient(90deg, 
-                        #FFFF00 0px, 
-                        #FFFF00 12px, 
-                        transparent 12px, 
-                        transparent 20px
-                      )
-                    `
-                  }} />
-                  
-                  {/* 歩行者 */}
-                  <div style={{
-                    position: 'absolute',
-                    top: '8px',
-                    left: '20%',
-                    fontSize: '16px',
-                    animation: 'walk 8s linear infinite'
-                  }}>🚶</div>
-                  <div style={{
-                    position: 'absolute',
-                    top: '8px',
-                    right: '30%',
-                    fontSize: '16px',
-                    animation: 'walk-reverse 10s linear infinite'
-                  }}>🚶‍♀️</div>
-                </div>
-
-                {/* 下側の店舗 */}
-                <div style={{ display: 'flex', gap: '12px', justifyContent: 'space-around' }}>
-                  {shops.slice(3, 6).map(shop => (
-                    <div
-                      key={shop.id}
-                      className="cursor-pointer"
-                      onClick={() => handleShopClick(shop)}
-                      style={{
-                        transition: 'transform 0.1s',
-                        flex: '1',
-                        maxWidth: '120px'
-                      }}
-                    >
-                      <div
-                        style={{
-                          backgroundColor: shop.color,
-                          border: '4px solid',
-                          borderTopColor: '#FFFFFF',
-                          borderLeftColor: '#FFFFFF', 
-                          borderRightColor: '#000000',
-                          borderBottomColor: '#000000',
-                          padding: '12px',
-                          textAlign: 'center',
-                          boxShadow: 'inset 2px 2px 0px rgba(255,255,255,0.8), inset -2px -2px 0px rgba(0,0,0,0.8)',
-                          position: 'relative',
-                          minHeight: '100px'
-                        }}
-                      >
-                        <div style={{
-                          fontSize: '24px',
-                          marginBottom: '6px',
-                          filter: 'contrast(2) brightness(1.2)',
-                          textShadow: '2px 2px 0px #000000'
-                        }}>{shop.emoji}</div>
-                        <h3 style={{
-                          fontSize: '12px',
-                          fontWeight: 'bold',
-                          color: '#FFFFFF',
-                          textShadow: '2px 2px 0px #000000',
-                          marginBottom: '6px',
-                          letterSpacing: '1px'
-                        }}>
-                          {shop.name}
-                        </h3>
-                        <div style={{
-                          fontSize: '10px',
-                          color: '#FFFFFF',
-                          backgroundColor: 'rgba(0,0,0,0.5)',
-                          border: '2px solid #000000',
-                          padding: '2px 6px',
-                          textShadow: '1px 1px 0px #000000'
-                        }}>
-                          {shop.items.length} ITEMS
-                        </div>
-                      </div>
-                    </div>
-                  ))}
+                <div className="text-sm text-apple-gray-600 font-medium">
+                  {shops.length} 店舗営業中
                 </div>
               </div>
-
-              {/* アニメーション用CSS */}
-              <style>{`
-                @keyframes walk {
-                  0% { left: -20px; }
-                  100% { left: calc(100% + 20px); }
-                }
-                @keyframes walk-reverse {
-                  0% { right: -20px; }
-                  100% { right: calc(100% + 20px); }
-                }
-              `}</style>
+              
+              {/* 商店グリッド */}
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {shops.map(shop => {
+                  const getShopColorClasses = (color: string) => {
+                    const colorMap: {[key: string]: string} = {
+                      '#FFD700': 'from-yellow-400 to-amber-500',
+                      '#4169E1': 'from-blue-400 to-indigo-600', 
+                      '#FF69B4': 'from-pink-400 to-rose-500',
+                      '#8B4513': 'from-amber-600 to-orange-700',
+                      '#32CD32': 'from-green-400 to-emerald-600',
+                      '#00CED1': 'from-cyan-400 to-teal-600'
+                    };
+                    return colorMap[color] || 'from-gray-400 to-gray-600';
+                  };
+                  
+                  return (
+                    <div
+                      key={shop.id}
+                      className="group relative bg-white hover:bg-apple-gray-50 border border-apple-gray-200 rounded-apple-lg p-6 cursor-pointer transition-all duration-300 transform hover:scale-[1.02] shadow-apple hover:shadow-apple-hover"
+                      onClick={() => handleShopClick(shop)}
+                    >
+                      <div className="flex flex-col items-center text-center space-y-3">
+                        <div className={`w-16 h-16 bg-gradient-to-br ${getShopColorClasses(shop.color)} rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}>
+                          <span className="text-3xl">{shop.emoji}</span>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-bold text-apple-gray-900 mb-1">{shop.name}</h3>
+                          <p className="text-sm text-apple-gray-600 font-medium">
+                            {shop.items.length} 商品
+                          </p>
+                        </div>
+                        <div className="absolute top-3 right-3 w-6 h-6 text-apple-gray-400 group-hover:text-apple-blue transition-colors">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           </div>
 
           {/* プレイヤー情報・所持品 */}
-          <div>
-            <div style={{
-              backgroundColor: '#C0C0C0',
-              border: '4px solid #D0D0D0',
-              borderTop: '4px solid #FFFFFF',
-              borderLeft: '4px solid #FFFFFF',
-              borderRight: '4px solid #808080',
-              borderBottom: '4px solid #808080',
-              padding: '24px',
-              boxShadow: 'inset 2px 2px 0px #F0F0F0, inset -2px -2px 0px #606060'
-            }}>
-              <h3 style={{
-                fontSize: '18px',
-                fontWeight: 'bold',
-                marginBottom: '16px',
-                color: '#000080',
-                textShadow: '1px 1px 0px #FFFFFF',
-                letterSpacing: '1px'
-              }}>
-                ♦ YOUR ITEMS ♦
-              </h3>
+          <div className="xl:col-span-1">
+            <div className="bg-white/80 backdrop-blur-apple border border-apple-gray-200 rounded-apple-lg p-6 shadow-apple">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-10 h-10 bg-gradient-to-br from-indigo-400 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl">👤</span>
+                </div>
+                <h3 className="text-xl font-bold text-apple-gray-900">
+                  所持品
+                </h3>
+              </div>
               
-              <div style={{ marginBottom: '16px' }}>
-                <div style={{
-                  backgroundColor: '#00FF00',
-                  border: '3px solid #80FF80',
-                  borderTop: '3px solid #FFFFFF',
-                  borderLeft: '3px solid #FFFFFF',
-                  borderRight: '3px solid #008000',
-                  borderBottom: '3px solid #008000',
-                  padding: '12px'
-                }}>
-                  <div style={{
-                    fontSize: '16px',
-                    fontWeight: 'bold',
-                    color: '#000000',
-                    textShadow: '1px 1px 0px #FFFFFF'
-                  }}>
-                    $ {player.money.toLocaleString()} YEN
+              <div className="mb-6">
+                <div className="bg-gradient-to-r from-green-500 to-emerald-600 text-white p-4 rounded-apple shadow-lg">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-sm opacity-90">残高</p>
+                      <p className="text-2xl font-bold">
+                        ¥{player.money.toLocaleString()}
+                      </p>
+                    </div>
+                    <div className="text-3xl opacity-80">
+                      💰
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div style={{ 
-                maxHeight: '256px', 
-                overflowY: 'auto',
-                border: '2px solid #808080',
-                backgroundColor: '#F0F0F0'
-              }}>
+              <div className="space-y-3 max-h-96 overflow-y-auto">
                 {player.items.length === 0 ? (
-                  <p style={{
-                    color: '#606060',
-                    textAlign: 'center',
-                    padding: '16px',
-                    fontSize: '14px',
-                    fontWeight: 'bold'
-                  }}>NO ITEMS YET</p>
+                  <div className="text-center py-8">
+                    <div className="text-6xl mb-4 opacity-30">🛍️</div>
+                    <p className="text-apple-gray-500 font-medium">
+                      まだ商品を購入していません
+                    </p>
+                  </div>
                 ) : (
-                  player.items.map((item, index) => (
-                    <div
-                      key={`${item.id}-${index}`}
-                      style={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        alignItems: 'center',
-                        padding: '12px',
-                        backgroundColor: '#E0E0E0',
-                        border: '2px solid #D0D0D0',
-                        borderTop: '2px solid #FFFFFF',
-                        borderLeft: '2px solid #FFFFFF',
-                        borderRight: '2px solid #A0A0A0',
-                        borderBottom: '2px solid #A0A0A0',
-                        marginBottom: '4px'
-                      }}
-                    >
-                      <div>
-                        <div style={{ 
-                          fontWeight: 'bold',
-                          fontSize: '14px',
-                          color: '#000000'
-                        }}>{item.name}</div>
-                        <div style={{ 
-                          fontSize: '12px',
-                          color: '#606060'
-                        }}>PRICE: ¥{item.price}</div>
-                      </div>
-                      <button
-                        onClick={() => handleSell(item, index)}
-                        style={{
-                          backgroundColor: '#FF4040',
-                          border: '2px solid #FF8080',
-                          borderTop: '2px solid #FFFFFF',
-                          borderLeft: '2px solid #FFFFFF',
-                          borderRight: '2px solid #C00000',
-                          borderBottom: '2px solid #C00000',
-                          color: '#FFFFFF',
-                          padding: '4px 8px',
-                          fontSize: '12px',
-                          fontWeight: 'bold',
-                          cursor: 'pointer',
-                          textShadow: '1px 1px 0px #000000'
-                        }}
+                  player.items.map((item, index) => {
+                    const getCategoryIcon = (category: string) => {
+                      const icons: {[key: string]: string} = {
+                        food: '🍞',
+                        book: '📚', 
+                        flower: '🌸',
+                        drink: '☕',
+                        fruit: '🍎',
+                        vegetable: '🥬',
+                        medicine: '💊'
+                      };
+                      return icons[category] || '📦';
+                    };
+                    
+                    return (
+                      <div
+                        key={`${item.id}-${index}`}
+                        className="bg-apple-gray-50 hover:bg-white border border-apple-gray-200 rounded-apple p-4 transition-all duration-200 group"
                       >
-                        SELL
-                      </button>
-                    </div>
-                  ))
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm border border-apple-gray-200">
+                              <span className="text-lg">{getCategoryIcon(item.category)}</span>
+                            </div>
+                            <div>
+                              <p className="font-medium text-apple-gray-900">{item.name}</p>
+                              <p className="text-sm text-apple-gray-500">購入価格: ¥{item.price.toLocaleString()}</p>
+                            </div>
+                          </div>
+                          <button
+                            onClick={() => handleSell(item, index)}
+                            className="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-3 rounded-lg transition-all duration-200 shadow-sm hover:shadow-md transform hover:scale-105 text-sm"
+                          >
+                            売却
+                          </button>
+                        </div>
+                      </div>
+                    );
+                  })
                 )}
               </div>
             </div>
@@ -566,147 +328,98 @@ const Urikai = () => {
 
       {/* 店舗詳細モーダル */}
       {selectedShop && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.8)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 50,
-          padding: '16px'
-        }}>
-          <div style={{
-            backgroundColor: '#C0C0C0',
-            border: '6px solid #E0E0E0',
-            borderTop: '6px solid #FFFFFF',
-            borderLeft: '6px solid #FFFFFF',
-            borderRight: '6px solid #808080',
-            borderBottom: '6px solid #808080',
-            padding: '24px',
-            maxWidth: '480px',
-            width: '100%',
-            boxShadow: 'inset 4px 4px 0px #F0F0F0, inset -4px -4px 0px #606060'
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              marginBottom: '16px'
-            }}>
-              <h3 style={{
-                fontSize: '20px',
-                fontWeight: 'bold',
-                color: selectedShop.color,
-                textShadow: '2px 2px 0px #000000',
-                letterSpacing: '1px'
-              }}>
-                {selectedShop.emoji} {selectedShop.name}
-              </h3>
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white/95 backdrop-blur-apple border border-apple-gray-300 rounded-apple-lg p-6 max-w-lg w-full shadow-2xl animate-in fade-in zoom-in-95 duration-300">
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <div className={`w-12 h-12 bg-gradient-to-br ${(() => {
+                  const colorMap: {[key: string]: string} = {
+                    '#FFD700': 'from-yellow-400 to-amber-500',
+                    '#4169E1': 'from-blue-400 to-indigo-600', 
+                    '#FF69B4': 'from-pink-400 to-rose-500',
+                    '#8B4513': 'from-amber-600 to-orange-700',
+                    '#32CD32': 'from-green-400 to-emerald-600',
+                    '#00CED1': 'from-cyan-400 to-teal-600'
+                  };
+                  return colorMap[selectedShop.color] || 'from-gray-400 to-gray-600';
+                })()} rounded-full flex items-center justify-center shadow-lg`}>
+                  <span className="text-2xl">{selectedShop.emoji}</span>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-apple-gray-900">
+                    {selectedShop.name}
+                  </h3>
+                  <p className="text-apple-gray-600 font-medium">
+                    {selectedShop.items.length} 商品を販売中
+                  </p>
+                </div>
+              </div>
               <button
                 onClick={() => setSelectedShop(null)}
-                style={{
-                  backgroundColor: '#FF4040',
-                  border: '3px solid #FF8080',
-                  borderTop: '3px solid #FFFFFF',
-                  borderLeft: '3px solid #FFFFFF',
-                  borderRight: '3px solid #C00000',
-                  borderBottom: '3px solid #C00000',
-                  color: '#FFFFFF',
-                  fontSize: '18px',
-                  fontWeight: 'bold',
-                  padding: '4px 8px',
-                  cursor: 'pointer',
-                  textShadow: '1px 1px 0px #000000'
-                }}
+                className="w-8 h-8 bg-apple-gray-200 hover:bg-apple-gray-300 text-apple-gray-600 hover:text-apple-gray-800 rounded-full flex items-center justify-center transition-all duration-200 shadow-sm hover:shadow-md"
               >
-                ×
+                <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
               </button>
             </div>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              {selectedShop.items.map(item => (
-                <div
-                  key={item.id}
-                  style={{
-                    backgroundColor: '#E0E0E0',
-                    border: '3px solid #F0F0F0',
-                    borderTop: '3px solid #FFFFFF',
-                    borderLeft: '3px solid #FFFFFF',
-                    borderRight: '3px solid #A0A0A0',
-                    borderBottom: '3px solid #A0A0A0',
-                    padding: '12px',
-                    boxShadow: 'inset 2px 2px 0px #F8F8F8, inset -2px -2px 0px #808080'
-                  }}
-                >
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: '8px'
-                  }}>
-                    <h4 style={{
-                      fontWeight: 'bold',
-                      fontSize: '16px',
-                      color: '#000000'
-                    }}>{item.name}</h4>
-                    <span style={{
-                      padding: '2px 6px',
-                      backgroundColor: '#0080FF',
-                      color: '#FFFFFF',
-                      fontSize: '10px',
-                      fontWeight: 'bold',
-                      border: '2px solid #4080FF',
-                      textShadow: '1px 1px 0px #000000'
-                    }}>
-                      {item.category}
-                    </span>
+            <div className="space-y-4 max-h-96 overflow-y-auto">
+              {selectedShop.items.map(item => {
+                const getCategoryIcon = (category: string) => {
+                  const icons: {[key: string]: string} = {
+                    food: '🍞',
+                    book: '📚', 
+                    flower: '🌸',
+                    drink: '☕',
+                    fruit: '🍎',
+                    vegetable: '🥬',
+                    medicine: '💊'
+                  };
+                  return icons[category] || '📦';
+                };
+                
+                const canAfford = player.money >= item.price;
+                
+                return (
+                  <div
+                    key={item.id}
+                    className={`bg-white border rounded-apple-lg p-4 transition-all duration-200 ${
+                      canAfford ? 'border-apple-gray-200 hover:border-apple-blue hover:shadow-md' : 'border-apple-gray-200 opacity-60'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-apple-gray-100 rounded-full flex items-center justify-center">
+                          <span className="text-lg">{getCategoryIcon(item.category)}</span>
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-apple-gray-900">{item.name}</h4>
+                          <span className="inline-block bg-apple-blue text-white text-xs font-medium px-2 py-1 rounded-full">
+                            {item.category}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-green-600">
+                        ¥{item.price.toLocaleString()}
+                      </span>
+                      <button
+                        onClick={() => handlePurchase(item)}
+                        disabled={!canAfford}
+                        className={`font-medium py-2 px-6 rounded-apple transition-all duration-200 shadow-sm hover:shadow-md transform ${
+                          canAfford 
+                            ? 'bg-apple-blue hover:bg-blue-600 text-white hover:scale-105'
+                            : 'bg-apple-gray-300 text-apple-gray-500 cursor-not-allowed'
+                        }`}
+                      >
+                        {canAfford ? '購入する' : '所持金不足'}
+                      </button>
+                    </div>
                   </div>
-                  <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}>
-                    <span style={{
-                      fontSize: '18px',
-                      fontWeight: 'bold',
-                      color: '#008000',
-                      textShadow: '1px 1px 0px #FFFFFF'
-                    }}>
-                      ¥{item.price.toLocaleString()}
-                    </span>
-                    <button
-                      onClick={() => handlePurchase(item)}
-                      disabled={player.money < item.price}
-                      style={{
-                        backgroundColor: player.money >= item.price ? '#FF8000' : '#808080',
-                        border: player.money >= item.price 
-                          ? '3px solid #FFA040' 
-                          : '3px solid #A0A0A0',
-                        borderTop: '3px solid #FFFFFF',
-                        borderLeft: '3px solid #FFFFFF',
-                        borderRight: player.money >= item.price 
-                          ? '3px solid #C06000' 
-                          : '3px solid #606060',
-                        borderBottom: player.money >= item.price 
-                          ? '3px solid #C06000' 
-                          : '3px solid #606060',
-                        color: '#FFFFFF',
-                        fontWeight: 'bold',
-                        padding: '8px 16px',
-                        cursor: player.money >= item.price ? 'pointer' : 'not-allowed',
-                        fontSize: '14px',
-                        textShadow: '1px 1px 0px #000000'
-                      }}
-                    >
-                      BUY
-                    </button>
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

@@ -47,6 +47,7 @@ interface Product {
 }
 
 const FinancialLiteracyGame = () => {
+  // const [showWelcomeAnimation, setShowWelcomeAnimation] = useState(true);
   const [player, setPlayer] = useState<Player>({
     id: 'player1',
     name: 'あなた',
